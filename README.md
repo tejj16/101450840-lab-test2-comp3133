@@ -1,27 +1,32 @@
-# 1012355LabTest2Comp3133
+# 101450840-lab-test2-comp3133 🚀
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.16.
+This project is an Angular application developed as part of **Lab Test 2** for COMP 3133 - Full Stack Development II at Saskatchewan Polytechnic.
+<img width="1499" alt="Screenshot 2025-04-02 at 5 38 18 PM" src="https://github.com/user-attachments/assets/915853e3-4f67-4dcb-8c9e-7122f1cc8e3e" />
+<img width="1507" alt="Screenshot 2025-04-02 at 5 39 47 PM" src="https://github.com/user-attachments/assets/3b5f09fe-859f-46ed-9982-a174c53900a8" />
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## 🔍 Features
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **Mission List View**: Displays a list of all SpaceX launches.
+- **Mission Details View**: Shows detailed information for a selected mission.
+- **Year-Based Filter**: Filter missions by launch year.
+- **Reusable Components**: Built using Angular components.
+- **Service Layer**: Uses Angular services and observables to fetch data.
+- **Angular Material**: Modern UI with responsive Material Design.
 
-## Build
+## 🚀 SpaceX API Used
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- Launches: `https://api.spacexdata.com/v3/launches`
+- Launch by Year: `https://api.spacexdata.com/v3/launches?launch_year=YYYY`
+- Launch Details: `https://api.spacexdata.com/v3/launches/:id`
 
-## Running unit tests
+## 💡 Tech Stack
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- Angular 17+
+- TypeScript
+- Angular Material
+- HTML5/CSS3
+- RxJS Observables
+- Vercel for Deployment
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
