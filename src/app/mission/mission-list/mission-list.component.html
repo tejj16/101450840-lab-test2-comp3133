@@ -1,0 +1,64 @@
+<div class="homepage-container">
+  <div class="missions-container">
+    <h1 class="page-title">SpaceX Missions Launch List</h1>
+    
+    <div class="missions-grid">
+      <mat-card *ngFor="let mission of filteredMissions" class="mission-card">
+        <div class="mission-header">
+          <div class="mission-badge">Flight #{{ mission.flight_number }}</div>
+          <h2 class="mission-name">{{ mission.mission_name }}</h2>
+          <div class="mission-year">{{ mission.launch_year }}</div>
+        </div>
+
+        <div class="mission-patch-container">
+          <img *ngIf="getSafeLinks(mission).mission_patch_small" 
+               [src]="getSafeLinks(mission).mission_patch_small" 
+               alt="Mission patch"
+               class="mission-patch">
+        </div>
+
+        <div class="mission-details">
+          <p class="mission-description">{{ mission.details || 'No mission details available' }}</p>
+          
+          <div class="rocket-info">
+            <div>
+              <div class="rocket-name">{{ mission.rocket.rocket_name }}</div>
+              <div class="rocket-type">{{ mission.rocket.rocket_type }}</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mission-actions">
+          <a mat-stroked-button 
+             [routerLink]="['/missions', mission.flight_number]" 
+             color="primary"
+             class="action-button">
+            Details
+          </a>
+          <a mat-stroked-button 
+             *ngIf="getSafeLinks(mission).article_link" 
+             [href]="getSafeLinks(mission).article_link" 
+             target="_blank"
+             class="action-button">
+            Article
+          </a>
+        </div>
+      </mat-card>
+    </div>
+
+    <div *ngIf="isLoading" class="loading-spinner">
+      <mat-spinner diameter="50"></mat-spinner>
+    </div>
+    
+    <div *ngIf="!isLoading && filteredMissions.length === 0" class="no-results">
+      No missions found for the selected filter.
+    </div>
+  </div>
+
+  <div class="filter-container">
+    <app-mission-filter 
+      [years]="years" 
+      (filterChanged)="onFilterChange($event)">
+    </app-mission-filter>
+  </div>
+</div>

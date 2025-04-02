@@ -1,0 +1,81 @@
+<div class="details-container" *ngIf="mission">
+  <div class="mission-header">
+    <h1 class="mission-title">{{ mission.mission_name }}</h1>
+    <p class="mission-subtitle">Flight #{{ mission.flight_number }} | {{ mission.launch_year }}</p>
+  </div>
+
+  <div class="detail-section">
+    <h2 class="section-title">Mission Details</h2>
+    <p class="mission-description">{{ mission.details || 'No details available' }}</p>
+  </div>
+
+  <div class="detail-section">
+    <h2 class="section-title" (click)="toggleRocketInfo()" style="cursor: pointer;">
+      Rocket Information
+    </h2>
+    
+    <div class="rocket-info" *ngIf="showRocketInfo">
+      <div class="detail-row">
+        <span class="detail-label">Name:</span>
+        <span class="detail-value">{{ mission.rocket.rocket_name }}</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Type:</span>
+        <span class="detail-value">{{ mission.rocket.rocket_type }}</span>
+      </div>
+      <div class="detail-row" *ngIf="mission.rocket.first_stage">
+        <span class="detail-label">First Stage:</span>
+        <span class="detail-value">
+          {{ mission.rocket.first_stage.cores?.length || 0 }} cores,
+          {{ mission.rocket.first_stage.cores?.[0]?.reused ? 'Reused' : 'New' }}
+        </span>
+      </div>
+      <div class="detail-row" *ngIf="mission.rocket.second_stage">
+        <span class="detail-label">Second Stage:</span>
+        <span class="detail-value">
+          Payloads: {{ mission.rocket.second_stage.payloads?.length || 0 }}
+        </span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Rocket ID:</span>
+        <span class="detail-value">{{ mission.rocket.rocket_id }}</span>
+      </div>
+      <div class="detail-row" *ngIf="mission.rocket.fairings">
+        <span class="detail-label">Fairings:</span>
+        <span class="detail-value">
+          {{ mission.rocket.fairings.reused ? 'Reused' : 'New' }},
+          {{ mission.rocket.fairings.recovered ? 'Recovered' : 'Not Recovered' }}
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-section">
+    <h2 class="section-title">Media</h2>
+    <div class="media-links">
+      <a mat-stroked-button *ngIf="safeLinks.article_link" 
+         [href]="safeLinks.article_link" 
+         target="_blank">
+        Article
+      </a>
+      <a mat-stroked-button *ngIf="safeLinks.wikipedia" 
+         [href]="safeLinks.wikipedia" 
+         target="_blank">
+        Wikipedia
+      </a>
+      <a mat-stroked-button *ngIf="safeLinks.video_link" 
+         [href]="safeLinks.video_link" 
+         target="_blank">
+        Video
+      </a>
+    </div>
+  </div>
+
+  <div class="mission-patch" *ngIf="safeLinks.mission_patch_small">
+    <img [src]="safeLinks.mission_patch_small" alt="Mission Patch">
+  </div>
+
+  <button mat-raised-button color="primary" routerLink="/missions" class="back-button">
+    Back to Missions
+  </button>
+</div>

@@ -1,0 +1,49 @@
+<div class="filter-panel">
+  <h2 class="filter-title">Filters</h2>
+  
+  <div class="filter-section">
+    <h3 class="filter-subtitle">Launch Year</h3>
+    <div class="year-grid">
+      <button *ngFor="let year of years" 
+              class="year-btn"
+              [class.active]="selectedYear === year"
+              (click)="toggleYear(year)">
+        {{ year }}
+      </button>
+    </div>
+  </div>
+
+  <div class="filter-section">
+    <h3 class="filter-subtitle">Launch Success</h3>
+    <div class="toggle-buttons">
+      <button class="toggle-btn" 
+              [class.active]="launchSuccess === true"
+              (click)="setLaunchSuccess(true)">
+        Yes
+      </button>
+      <button class="toggle-btn" 
+              [class.active]="launchSuccess === false"
+              (click)="setLaunchSuccess(false)">
+        No
+      </button>
+    </div>
+  </div>
+
+  <div class="filter-section">
+    <h3 class="filter-subtitle">Landing Success</h3>
+    <div class="toggle-buttons">
+      <button class="toggle-btn" 
+              [class.active]="landSuccess === true"
+              (click)="setLandSuccess(true)">
+        Yes
+      </button>
+      <button class="toggle-btn" 
+              [class.active]="landSuccess === false"
+              (click)="setLandSuccess(false)">
+        No
+      </button>
+    </div>
+  </div>
+
+  <button class="clear-btn" (click)="clearFilters()">Clear Filters</button>
+</div>
